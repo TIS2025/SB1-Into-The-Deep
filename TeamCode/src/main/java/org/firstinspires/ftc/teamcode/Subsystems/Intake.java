@@ -12,7 +12,7 @@ public class Intake {
     public Intake(RobotHardware robot){this.robot=robot;}
 
     //Servo states
-    public enum IntakeServo1State {
+    public enum IntakeYawServoState {
         INIT,
         STATE1,
         STATE2,
@@ -39,28 +39,28 @@ public class Intake {
         INIT
     }
 
-    IntakeServo1State servo1State = IntakeServo1State.INIT;
+    IntakeYawServoState servo1State = IntakeYawServoState.INIT;
     IntakeServo2State servo2State = IntakeServo2State.INIT;
     IntakeServo3State servo3State = IntakeServo3State.INIT;
     IntakeMotorState motorState = IntakeMotorState.INIT;
 
-    public InstantAction SetServo1(IntakeServo1State state){
+    public InstantAction SetYawServo(IntakeYawServoState state){
         switch (state){
             case INIT:
-                servo1State = IntakeServo1State.INIT;
-                return new InstantAction(()->SetServo1(ServoConst.intakeServo1Init));
+                servo1State = IntakeYawServoState.INIT;
+                return new InstantAction(()-> SetYawServo(ServoConst.intakeServo1Init));
             case STATE1:
-                servo1State = IntakeServo1State.STATE1;
-                return new InstantAction(()->SetServo1(ServoConst.intakeServo1State1));
+                servo1State = IntakeYawServoState.STATE1;
+                return new InstantAction(()-> SetYawServo(ServoConst.intakeServo1State1));
             case STATE2:
-                servo1State = IntakeServo1State.STATE2;
-                return new InstantAction(()->SetServo1(ServoConst.intakeServo1State2));
+                servo1State = IntakeYawServoState.STATE2;
+                return new InstantAction(()-> SetYawServo(ServoConst.intakeServo1State2));
             case STATE3:
-                servo1State = IntakeServo1State.STATE3;
-                return new InstantAction(()->SetServo1(ServoConst.intakeServo1State3));
+                servo1State = IntakeYawServoState.STATE3;
+                return new InstantAction(()-> SetYawServo(ServoConst.intakeServo1State3));
             default:
-                servo1State = IntakeServo1State.INIT;
-                return new InstantAction(()->SetServo1(0.5));
+                servo1State = IntakeYawServoState.INIT;
+                return new InstantAction(()-> SetYawServo(0.5));
         }
     }
     public InstantAction SetServo2(IntakeServo2State state){
@@ -116,21 +116,21 @@ public class Intake {
         }
     }
 
-    private void SetServo1(double position){robot.intake1.setPosition(position);}
+    private void SetYawServo(double position){robot.intakeYaw.setPosition(position);}
     private void SetServo2(double position){robot.intake2.setPosition(position);}
     private void SetServo3(double position){robot.intake3.setPosition(position);}
 
     public InstantAction IncServo1by0_1(){
-        return new InstantAction(()->SetServo1(robot.intake1.getPosition()+0.1));
+        return new InstantAction(()-> SetYawServo(robot.intakeYaw.getPosition()+0.1));
     }
     public InstantAction IncServo1by0_01(){
-        return new InstantAction(()->SetServo1(robot.intake1.getPosition()+0.01));
+        return new InstantAction(()-> SetYawServo(robot.intakeYaw.getPosition()+0.01));
     }
     public InstantAction DecServo1by0_1(){
-        return new InstantAction(()->SetServo1(robot.intake1.getPosition()-0.1));
+        return new InstantAction(()-> SetYawServo(robot.intakeYaw.getPosition()-0.1));
     }
     public InstantAction DecServo1by0_01(){
-        return new InstantAction(()->SetServo1(robot.intake1.getPosition()-0.01));
+        return new InstantAction(()-> SetYawServo(robot.intakeYaw.getPosition()-0.01));
     }
 
     public InstantAction IncServo2by0_1(){

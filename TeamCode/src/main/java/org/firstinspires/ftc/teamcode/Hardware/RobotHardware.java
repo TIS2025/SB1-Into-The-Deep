@@ -4,6 +4,7 @@ import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.qualcomm.hardware.rev.RevColorSensorV3;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -17,7 +18,7 @@ public class RobotHardware {
 
     //Todo Intake for samples and extension
     public DcMotorEx intakeSliderMotor,intakeMotor;
-    public Servo intake1,intake2,intake3;
+    public Servo intakeYaw,intake2,intake3;
 
     //Todo Lifter
     public DcMotorEx lifterMotor;
@@ -25,8 +26,9 @@ public class RobotHardware {
     //Todo Picker, Dropper for specimens
     public Servo pick_drop1,pick_drop2,pick_drop3;
 
-    //Todo Color Sensor, Camera
+    //Todo Color Sensor, Camera, Beambreaker
     public RevColorSensorV3 colorSenor;
+    public DigitalChannel beambreaker;
 
     public RobotHardware(HardwareMap hardwareMap){
 
@@ -36,7 +38,7 @@ public class RobotHardware {
         //Intake init
         this.intakeMotor = hardwareMap.get(DcMotorEx.class,"intMotor");
         this.intakeSliderMotor = hardwareMap.get(DcMotorEx.class,"intSlMotor");
-        this.intake1 = hardwareMap.get(Servo.class,"servo1");
+        this.intakeYaw = hardwareMap.get(Servo.class,"servo1");
         this.intake2 = hardwareMap.get(Servo.class,"servo2");
         this.intake3 = hardwareMap.get(Servo.class,"servo3");
 
@@ -50,5 +52,6 @@ public class RobotHardware {
 
         //Color sensor init
         this.colorSenor = hardwareMap.get(RevColorSensorV3.class,"color");
+        this.beambreaker = hardwareMap.get(DigitalChannel.class,"beambreaker");
     }
 }

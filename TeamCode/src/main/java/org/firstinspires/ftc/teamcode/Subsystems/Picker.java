@@ -93,7 +93,7 @@ public class Picker {
         }
     }
 
-    private void SetServo1(double position){robot.intake1.setPosition(position);}
+    private void SetServo1(double position){robot.intakeYaw.setPosition(position);}
     private void SetServo2(double position){robot.intake2.setPosition(position);}
     private void SetServo3(double position){robot.intake3.setPosition(position);}
 

@@ -12,7 +12,7 @@ public class InitSeq {
     public InitSeq(Intake intake, Slider slider, Lifter lifter, Picker picker){
         Actions.runBlocking(
                 new SequentialAction(
-                        intake.SetServo1(Intake.IntakeServo1State.INIT),
+                        intake.SetYawServo(Intake.IntakeYawServoState.INIT),
                         intake.SetServo2(Intake.IntakeServo2State.INIT),
                         intake.SetServo3(Intake.IntakeServo3State.INIT),
                         intake.SetMotor(Intake.IntakeMotorState.INIT),
